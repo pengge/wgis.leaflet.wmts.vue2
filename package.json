@@ -1,0 +1,13 @@
+{
+  "name": "wgis.leaflet.wmts.vue2",
+  "version": "1.0.0",
+  "description": "Add WMTS layers for Leaflet",
+  "main": "./src/wgis.leaflet.wmts.vue2.js",
+  "repository": "https://github.com/pengge/wgis.leaflet.wmts.vue2",
+  "author": "pengge",
+  "license": "MIT",
+  "private": false, 
+  "dependencies": {
+    "leaflet": "1.6.0"
+  }, 
+}
