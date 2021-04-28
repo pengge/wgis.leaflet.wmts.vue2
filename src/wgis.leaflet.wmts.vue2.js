@@ -6,7 +6,7 @@ L.TileLayer.WMTS = L.TileLayer.extend({
     version: '1.0.0',
     layer: '',
     style: '',
-    tilematrixset: '',
+    tilematrixset: '',  
     format: 'image/jpeg',
   },
 
@@ -83,7 +83,7 @@ L.TileLayer.WMTS = L.TileLayer.extend({
     const tilewidth = se.x - nw.x;
 
     const ident = this.matrixIds[zoom].identifier;
-    const tilematrix = `${this.wmtsParams.tilematrixset}:${ident}`;
+	const tilematrix = `${ident}`;  
     const X0 = this.matrixIds[zoom].topLeftCorner.lng;
     const Y0 = this.matrixIds[zoom].topLeftCorner.lat;
     const tilecol = Math.floor((nw.x - X0) / tilewidth);
@@ -92,9 +92,9 @@ L.TileLayer.WMTS = L.TileLayer.extend({
     const url = L.Util.template(this._url, {
       s: this._getSubdomain(coords),
     });
-
-    return `${url}${L.Util.getParamString(this.wmtsParams, url)}` +
+	return `${url}${L.Util.getParamString(this.wmtsParams, url)}` +
       `&tilematrix=${tilematrix}&tilerow=${tilerow}&tilecol=${tilecol}`;
+	
   },
 
 
@@ -132,3 +132,7 @@ L.TileLayer.WMTS = L.TileLayer.extend({
     return matrixIds3857;
   },
 });
+
+L.tileLayer.wmts = function(type, options) {
+  return new L.TileLayer.WMTS(type, options);
+};
